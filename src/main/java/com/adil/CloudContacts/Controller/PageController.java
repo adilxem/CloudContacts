@@ -3,6 +3,8 @@ package com.adil.CloudContacts.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 
 
@@ -17,17 +19,39 @@ public class PageController {
         return "home";
     }
     
-    @RequestMapping("/about")
+    @GetMapping("/about")
     public String about() {
 
         return "about";
     }
 
 
-    @RequestMapping("/services")
+    @GetMapping("/services")
     public String services() {
 
         return "sevices";
     }
+
+
+    @GetMapping("/contactUs")
+    public String contact() {
+
+        return "contactUs";
+    }
+
+
+    @GetMapping("/login")
+    public String login() {
+
+        return "login";
+    }
+
+
+    @GetMapping("/register")
+    public String register() {
+
+        return "register";
+    }
+   
     
 }

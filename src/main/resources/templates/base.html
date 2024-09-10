@@ -2,6 +2,7 @@
 <html
 
  lang="en"
+ class="dark"
  th:fragment="parent(content, title, script)" 
  xmlns:th="http://www.thymeleaf.org">
 
@@ -15,7 +16,7 @@
 
     <title data-th-replace="${title}">Base Page</title>
 </head>
-<body>
+<body class="dark:bg-gray-900 dark:text-white">
 
 
     <header data-th-replace="~{navbar :: navbar}">
