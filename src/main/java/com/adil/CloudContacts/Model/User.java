@@ -3,7 +3,6 @@ package com.adil.CloudContacts.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +25,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private int id;
 
-    @Column(nullable = false)
+    // @Column(nullable = false)
     private String name;
 
     @Column(unique = true, nullable = false)
