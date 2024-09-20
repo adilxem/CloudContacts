@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 public class Contacts {
 
     @Id
-    private int id;
+    private String id;
 
     private String name;
 
