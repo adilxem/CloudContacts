@@ -36,16 +36,18 @@
                     <form data-th-action="@{'/register'}" method="post"
                     
                     
-                    th:object="${user}"
+                    th:object="${userForm}"
                     
-                    class="mt-10">
+                    class="mt-7"
+                    novalidate
+                    >
 
 
                     <div data-th-replace="~{message :: messageBox}"></div>
 
                         <!-- name input -->
 
-                        <div class="mb-4">
+                        <div class="mb-0">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
 
                             <input type="text" id="name" 
@@ -55,10 +57,18 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your Name" required />
                           </div>
 
+                          <p 
+
+                          data-th-if="${#fields.hasErrors('name')}"
+
+                          data-th-errors="*{name}"
+
+                          class="text-red-500 py-0.5 px-0.5 text-sm">Name is required!</p>
+
 
                           <!-- email input -->
 
-                          <div class="mb-5">
+                          <div class="mt-4 mb-0">
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Address</label>
 
 
@@ -70,9 +80,18 @@
                           </div>
 
 
+                          <p 
+
+                          data-th-if="${#fields.hasErrors('email')}"
+
+                          data-th-errors="*{email}"
+
+                          class="text-red-500 py-0.5 px-0.5 text-sm">Email is required!</p>
+
+
                           <!-- password input -->
 
-                          <div class="mb-5">
+                          <div class="mt-4 mb-0">
                             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
 
 
@@ -82,6 +101,14 @@
                             
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                           </div>
+
+                          <p 
+
+                          data-th-if="${#fields.hasErrors('password')}"
+
+                          data-th-errors="*{password}"
+
+                          class="text-red-500 py-0.5 px-0.5 text-sm">Password is required!</p>
 
                           <div class="mt-10 mb-3 flex justify-center">
 

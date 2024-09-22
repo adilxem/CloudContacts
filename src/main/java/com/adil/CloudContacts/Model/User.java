@@ -12,7 +12,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,12 +30,11 @@ public class User {
     @Id
     private String id;
 
-    // @Column(nullable = false)
+    @NotNull
     private String name;
 
     @Column(unique = true, nullable = false)
     @NotNull
-    @Email
     private String email;
 
     @Column(nullable = false)
