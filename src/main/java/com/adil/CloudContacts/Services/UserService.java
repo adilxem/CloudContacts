@@ -1,12 +1,15 @@
 package com.adil.CloudContacts.Services;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.adil.CloudContacts.Helper.Constants;
 import com.adil.CloudContacts.Helper.ResourceNotFoundExcepiton;
 import com.adil.CloudContacts.Model.User;
 import com.adil.CloudContacts.Repository.UserRepository;
@@ -16,6 +19,9 @@ public class UserService {
 
     @Autowired
     UserRepository repository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     private Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
 
@@ -27,6 +33,12 @@ public class UserService {
         user.setId(id);
 
         // encode the password
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // set user default role
+
+        user.setRoleList(List.of(Constants.ROLE_USER));
 
         // set a default profile picture
 

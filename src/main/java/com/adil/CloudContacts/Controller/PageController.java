@@ -30,6 +30,12 @@ public class PageController {
     @Autowired
     UserService service;
 
+    @GetMapping("/")
+    public String index() {
+
+        return "redirect:/home";
+    }
+
     @RequestMapping("/home")
     public String home(Model model) {
 
@@ -108,7 +114,7 @@ public class PageController {
         // redirect to login page
         // done:
 
-        return "redirect:/register";
+        return "redirect:/user/dashboard";
 
 
 
@@ -121,6 +127,5 @@ public class PageController {
         // .password(userForm.getPassword())
         // .build();        
     }
-       
-    
+
 }
