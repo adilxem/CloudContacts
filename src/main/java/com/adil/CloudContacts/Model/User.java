@@ -22,12 +22,13 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -61,7 +62,7 @@ public class User implements UserDetails{
 
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<Contacts> contacts = new ArrayList<>();
+    private List<Contact> contacts = new ArrayList<>();
 
 
     @ElementCollection(fetch = FetchType.EAGER)

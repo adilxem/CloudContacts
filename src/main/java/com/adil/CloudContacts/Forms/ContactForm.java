@@ -3,12 +3,16 @@ package com.adil.CloudContacts.Forms;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class ContactForm {
 
 
@@ -30,6 +34,6 @@ public class ContactForm {
 
     private boolean favourite = false;
 
-    private MultipartFile contactImage;
+    private MultipartFile profileImage;
 
 }
