@@ -58,7 +58,7 @@
 
                                 <label for="input-group-1"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Name</label>
-                                <div class="relative mb-6">
+                                <div class="relative mb-1">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                                         <i class="fa-solid fa-user h-4 w-4"></i>
                                     </div>
@@ -70,6 +70,14 @@
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Contact Name">
                                 </div>
+
+                                <p 
+
+                                data-th-if="${#fields.hasErrors('name')}"
+
+                                data-th-errors="*{name}"
+
+                                class="text-red-500 py-0.5 px-0.5 text-sm">Name is required!</p>
     
                             </div>
 
@@ -79,7 +87,7 @@
 
                                 <label for="input-group-1"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Email</label>
-                                <div class="relative mb-6">
+                                <div class="relative mb-1">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                                         <i class="fa-solid fa-envelope h-4 w-4"></i>
                                     </div>
@@ -91,6 +99,14 @@
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="example@domain.com">
                                 </div>
+
+                                <p 
+
+                                data-th-if="${#fields.hasErrors('email')}"
+
+                                data-th-errors="*{email}"
+
+                                class="text-red-500 py-0.5 px-0.5 text-sm">Email is required!</p>
     
                             </div>
 
@@ -101,7 +117,7 @@
 
                                 <label for="input-group-1"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Phone</label>
-                                <div class="relative mb-6">
+                                <div class="relative mb-1">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                                         <i class="fa-solid fa-phone h-4 w-4"></i>
                                     </div>
@@ -109,6 +125,14 @@
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="9999999999">
                                 </div>
+
+                                <p 
+
+                                data-th-if="${#fields.hasErrors('phoneNumber')}"
+
+                                data-th-errors="*{phoneNumber}"
+
+                                class="text-red-500 py-0.5 px-0.5 text-sm">Email is required!</p>
     
                             </div>
 
@@ -124,6 +148,17 @@
 placeholder="Flat No.
 Street, Landmark
 City, Country"></textarea>
+
+
+                                <p 
+
+                                data-th-if="${#fields.hasErrors('address')}"
+
+                                data-th-errors="*{address}"
+
+                                class="text-red-500 py-0.5 px-0.5 text-sm">Email is required!</p>
+
+
                             </div>
 
 

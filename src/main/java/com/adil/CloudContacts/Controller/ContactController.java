@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,8 @@ import com.adil.CloudContacts.Model.Contact;
 import com.adil.CloudContacts.Model.User;
 import com.adil.CloudContacts.Services.ContactService;
 import com.adil.CloudContacts.Services.UserService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/user/contacts")
@@ -37,8 +40,10 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String saveContact(@ModelAttribute ContactForm contactForm, Authentication authentication) {
+    public String saveContact(@Valid @ModelAttribute ContactForm contactForm, BindingResult result, Authentication authentication) {
 
+
+        if (result.hasErrors()) return "/user/add-contact";
 
         String username = Helper.getEmailOfLoggedInUser(authentication);
 
