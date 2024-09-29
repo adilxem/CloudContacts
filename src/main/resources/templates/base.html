@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" data-th-href="@{'css/output.css'}">
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
 
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
 
@@ -21,7 +21,25 @@
 <body class="bg-gray-50 dark:bg-gray-900 dark:text-white">
 
 
-    <header data-th-replace="~{navbar :: navbar}">
+    <!-- NAVBAR FOR LOGGED IN USER -->
+
+    <header th:if="${loggedInUser}">
+
+        <header th:replace="~{/user/user-navbar :: user-navbar}"></header>
+
+    </header>
+
+
+    
+
+    <!-- NAVBAR W/OUT LOGIN -->
+
+    <header th:unless="${loggedInUser}">
+        
+        <header data-th-replace="~{navbar :: navbar}">
+
+    </header>
+
 
         
 
@@ -46,7 +64,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-    <script data-th-src="@{'js/script.js'}"></script>
+    <script th:src="@{/js/script.js}"></script>
 
     <th:block data-th-replace="${script}"></th:block>
 </body>

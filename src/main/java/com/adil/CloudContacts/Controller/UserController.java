@@ -1,7 +1,10 @@
 package com.adil.CloudContacts.Controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -23,8 +26,10 @@ public class UserController {
     //profile
 
     @GetMapping("/profile")
-    public String profile() {
+    public String profile(Model model, Authentication authentication) {
 
+
+        
 
         return "user/profile";
     }

@@ -1,19 +1,17 @@
-package com.adil.CloudContacts.Model;
+package com.adil.CloudContacts.Forms;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Contacts {
+@NoArgsConstructor
+public class ContactForm {
 
-    @Id
+
     private String id;
 
     private String name;
@@ -30,9 +28,8 @@ public class Contacts {
 
     private String linkedinLink;
 
-    private boolean favorite = false;
+    private boolean favourite = false;
 
+    private MultipartFile contactImage;
 
-    @ManyToOne
-    private User user;
 }

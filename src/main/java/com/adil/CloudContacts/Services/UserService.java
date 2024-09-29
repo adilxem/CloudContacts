@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,6 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
 
 
     public User addUser(User user) {
@@ -42,7 +40,7 @@ public class UserService {
 
         // set a default profile picture
 
-        user.setProfilePic("/resources/static/images/user.png");
+        user.setProfilePic("/images/user.png");
 
         return repository.save(user);
     }
@@ -61,7 +59,7 @@ public class UserService {
 
     public void deleteUser(String id) {
 
-        User user1 = repository.findById(id).orElseThrow(()-> new ResourceNotFoundExcepiton("USER NOT FOUND!"));
+        repository.findById(id).orElseThrow(()-> new ResourceNotFoundExcepiton("USER NOT FOUND!"));
 
         repository.deleteById(id);
     }
@@ -72,6 +70,12 @@ public class UserService {
         User user1 = repository.findById(id).orElse(null);
 
         return user1 != null ? true : false;
+    }
+
+
+    public User getUserByEmail(String email) {
+
+        return repository.findByEmail(email).orElse(null);
     }
 
 }
