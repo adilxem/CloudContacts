@@ -35,14 +35,12 @@ public class ContactForm {
     @NotBlank(message = "Address is required!")
     private String address;
 
-    private String picture;
-
     private String websiteLink;
 
     private String linkedinLink;
 
     private boolean favourite = false;
 
-    private MultipartFile profileImage;
+    private MultipartFile contactImage;
 
 }
