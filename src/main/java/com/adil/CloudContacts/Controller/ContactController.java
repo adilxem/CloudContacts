@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.adil.CloudContacts.Forms.ContactForm;
+import com.adil.CloudContacts.Forms.ContactSearchForm;
 import com.adil.CloudContacts.Helper.Constants;
 import com.adil.CloudContacts.Helper.Helper;
 import com.adil.CloudContacts.Helper.Message;
@@ -125,6 +126,7 @@ public class ContactController {
     @RequestParam(value = "size", defaultValue = Constants.PAGE_SIZE + "") int size, 
     @RequestParam(value = "sortBy", defaultValue = "name") String sortBy, 
     @RequestParam(value = "direction", defaultValue = "asc") String direction, 
+    @ModelAttribute ContactSearchForm contactSearchForm,
     Model model, Authentication authentication) {
 
         String username = Helper.getEmailOfLoggedInUser(authentication);
@@ -137,18 +139,56 @@ public class ContactController {
 
         model.addAttribute("pageSize", Constants.PAGE_SIZE);
 
+        model.addAttribute("contactSearchForm", contactSearchForm);
+
         return "/user/contacts";
     }
+
+    
 
 
     @RequestMapping("/search")
     public String searchHandler(
 
-        @RequestParam("field") String field,
-        @RequestParam("keyword") String value) {
+        // @RequestParam("field") String field,
+        // @RequestParam("keyword") String value,
+        @ModelAttribute ContactSearchForm contactSearchForm,
+        @RequestParam(value = "page", defaultValue = "0") int page, 
+        @RequestParam(value = "size", defaultValue = Constants.PAGE_SIZE + "") int size, 
+        @RequestParam(value = "sortBy", defaultValue = "name") String sortBy, 
+        @RequestParam(value = "direction", defaultValue = "asc") String direction, 
+        Model model, Authentication authentication
+        ) {
 
 
-        System.out.println("field: " + field + "    keyword: " + value);
+        System.out.println("field: " + contactSearchForm.getField() + "    keyword: " + contactSearchForm.getValue());
+
+        var user = userService.getUserByEmail(Helper.getEmailOfLoggedInUser(authentication));
+
+        Page<Contact> pageContact = null;
+
+        if (contactSearchForm.getField().equalsIgnoreCase("name")) {
+
+            pageContact = contactService.searchByName(contactSearchForm.getValue(), page, size, sortBy, direction, user);
+        }
+
+        else if (contactSearchForm.getField().equalsIgnoreCase("email")) {
+
+            pageContact = contactService.searchByEmail(contactSearchForm.getValue(), page, size, sortBy, direction, user);
+        }
+
+        else if (contactSearchForm.getField().equalsIgnoreCase("phone")) {
+
+            pageContact = contactService.searchByPhone(contactSearchForm.getValue(), page, size, sortBy, direction, user);
+        }
+
+        System.out.println("pageContact: " + pageContact);
+
+        model.addAttribute("pageSize", Constants.PAGE_SIZE);
+
+        model.addAttribute("contactSearchForm", contactSearchForm);
+
+        model.addAttribute("pageContact", pageContact);
 
         return "user/search";
     }

@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +59,34 @@ public class ContactService {
 
         return contactRepository.findByUser(user, pageable);
         
+    }
+
+    public Page<Contact> searchByName (String nameKeyword, int page, int size, String sortBy, String direction, User user) {
+
+        Sort sort = direction.equals("desc")? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+
+        var pageable = PageRequest.of(page, size, sort);
+
+        return contactRepository.findByUserAndNameContaining(user, nameKeyword, pageable);
+    }
+
+    public Page<Contact> searchByEmail (String emailKeyword,  int page, int size, String sortBy, String direction, User user) {
+
+
+        Sort sort = direction.equals("desc")? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+
+        var pageable = PageRequest.of(page, size, sort);
+
+        return contactRepository.findByUserAndEmailContaining(user, emailKeyword, pageable);
+    }
+
+    public Page<Contact> searchByPhone (String phoneKeyword,  int page, int size, String sortBy, String direction, User user) {
+
+
+        Sort sort = direction.equals("desc")? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+
+        var pageable = PageRequest.of(page, size, sort);
+
+        return contactRepository.findByUserAndPhoneNumberContaining(user, phoneKeyword, pageable);
     }
 }
