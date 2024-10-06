@@ -18,7 +18,7 @@ public class FileValidator implements ConstraintValidator<ValidFile, MultipartFi
 
             context.disableDefaultConstraintViolation();
 
-            context.buildConstraintViolationWithTemplate("Error: Empty File").addConstraintViolation();
+            context.buildConstraintViolationWithTemplate("Error: File cannot be empty, upload an image!").addConstraintViolation();
 
             return false;
         }
@@ -28,7 +28,7 @@ public class FileValidator implements ConstraintValidator<ValidFile, MultipartFi
 
             context.disableDefaultConstraintViolation();
 
-            context.buildConstraintViolationWithTemplate("Error: File size should not exceed 2MB").addConstraintViolation();
+            context.buildConstraintViolationWithTemplate("Error: File size should not exceed 2MB!").addConstraintViolation();
 
             return false;
         }
