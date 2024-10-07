@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{})}">
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
 
 <head>
 
@@ -133,10 +133,10 @@
                                             th:src="@{*{picture}}"
                                         >
                                         <div class="ps-3">
-                                            <a href="">
+                                            <button th:onclick="loadContactData([[${c.id}]])">
 
                                                 <div class="text-base font-semibold" th:text="*{name}"></div>
-                                            </a>
+                                            </button>
                                             
                                             <div class="font-normal text-gray-500" th:text="*{email}"></div>
                                         </div>  
@@ -263,14 +263,18 @@
 
             </div>
     
+            <div th:replace="~{user/contact-modal :: contact}">
+        
+            </div>
     
         </div>
 
         
     </div>
 
-    
 
+    
+<script th:src="@{'/js/contacts.js'}"></script>
 
 </body>
 </html>
