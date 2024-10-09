@@ -89,4 +89,23 @@ public class ContactService {
 
         return contactRepository.findByUserAndPhoneNumberContaining(user, phoneKeyword, pageable);
     }
+
+
+    public Contact update(Contact contact) {
+        
+        var contactOld = contactRepository.findById(contact.getId()).orElseThrow(() -> new ResourceNotFoundExcepiton("Contact Not Found"));
+
+        contactOld.setName(contact.getName());
+        contactOld.setEmail(contact.getEmail());
+        contactOld.setPhoneNumber(contact.getPhoneNumber());
+        contactOld.setAddress(contact.getAddress());
+        contactOld.setWebsiteLink(contact.getWebsiteLink());
+        contactOld.setLinkedinLink(contact.getLinkedinLink());
+        contactOld.setFavorite(contact.isFavorite());
+        contactOld.setPicture(contact.getPicture());
+        contactOld.setCloudinaryImagePublicId(contact.getCloudinaryImagePublicId());
+
+
+        return contactRepository.save(contactOld);
+    }
 }

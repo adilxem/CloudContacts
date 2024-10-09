@@ -14,14 +14,14 @@ public class FileValidator implements ConstraintValidator<ValidFile, MultipartFi
 
         // to check the if the file is empty ---> user must upload an image
         
-        if (file == null || file.isEmpty()) {
+        // if (file == null || file.isEmpty()) {
 
-            context.disableDefaultConstraintViolation();
+        //     context.disableDefaultConstraintViolation();
 
-            context.buildConstraintViolationWithTemplate("Error: File cannot be empty, upload an image!").addConstraintViolation();
+        //     context.buildConstraintViolationWithTemplate("Error: File cannot be empty, upload an image!").addConstraintViolation();
 
-            return false;
-        }
+        //     return false;
+        // }
 
 
         if (file.getSize() > MAX_FILE_SIZE) {

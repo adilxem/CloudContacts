@@ -88,6 +88,8 @@
 
                         </form>
 
+                        <div th:replace="~{message :: messageBox}"></div>
+
 
                         <!-- CONTACTS TABLE -->
 
@@ -178,12 +180,17 @@
                                         
                                         <div class="">
 
-                                            <a href="">
+                                            <!-- <a th:href="@{'/user/contacts/delete/'+*{id}}">
 
                                                 <i class="fa-solid fa-trash h-6 w-8"></i>
-                                            </a>
+                                            </a> -->
+                                            
+                                            <button th:onclick="deleteContact([[${c.id}]])" href="">
 
-                                            <a href="">
+                                                <i class="fa-solid fa-trash h-6 w-8"></i>
+                                            </button>
+
+                                            <a  th:href="@{'/user/contacts/view/'+*{id}}">
 
                                                 <i class="fa-solid fa-user-pen h-6 w-8"></i>
                                             </a>

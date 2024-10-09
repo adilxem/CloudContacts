@@ -12,6 +12,14 @@
 
         <h1>Home</h1>
 
+        <!-- SIDEBAR FOR LOGGED IN USER -->
+
+        <aside th:if="${loggedInUser}">
+
+            <aside th:replace="~{/user/sidebar :: sidebar}"></aside>
+
+        </aside>
+
     </section>
 
 

@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Add Contact</title>
+    <title>Update Contact</title>
 </head>
 
 <body>
@@ -33,16 +33,16 @@
                     <div class="card block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
 
-                        <h1 class="text-2xl font-semibold">Add New Contact</h1>
+                        <h1 class="text-2xl font-semibold">Update Contact</h1>
 
-                        <p class="text-gray-500 dark:text-gray-400">Add a new contact to store on the cloud with CloudContacts...</p>
+                        <!-- <p class="text-gray-500 dark:text-gray-400">Add a new contact to store on the cloud with CloudContacts...</p> -->
 
 
                         <!-- FORM -->
 
                         <form 
                         
-                        data-th-action="@{'/user/contacts/add'}"
+                        data-th-action="@{'/user/contacts/update/' + ${contactId}}"
 
                         method="post" enctype="multipart/form-data"
 
@@ -184,7 +184,7 @@ City, Country"></textarea>
                                             <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                                                 <i class="fa-solid fa-earth-americas h-4 w-4"></i>
                                             </div>
-                                            <input th:field="*{websiteLink}" type="text"
+                                            <input th:field="*{websiteLink}" type="url"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="www.contactwebsite.domain">
                                         </div>
@@ -203,7 +203,7 @@ City, Country"></textarea>
                                             <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                                                     <i class="fa-brands fa-linkedin-in h-4 w-4"></i>
                                             </div>
-                                            <input th:field="*{linkedinLink}" type="text"
+                                            <input th:field="*{linkedinLink}" type="url"
 
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="linkedin.com/in/contact-profile/">
@@ -243,7 +243,7 @@ City, Country"></textarea>
                                 class="text-red-500 py-0.5 px-0.5 text-sm"></p>
 
 
-                                <img src="" 
+                                <img data-th-src="*{picture}" 
                                 
                                 id="upload_image_preview"
 
@@ -270,7 +270,7 @@ City, Country"></textarea>
                             <div class="flex justify-center items-center">
 
 
-                                <button type="submit" class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Contact</button>
+                                <button type="submit" class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</button>
 
 
 
