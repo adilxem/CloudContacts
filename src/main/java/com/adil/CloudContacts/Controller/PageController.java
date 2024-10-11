@@ -86,7 +86,7 @@ public class PageController {
 
 
     @PostMapping("/register")
-    public String registerRequest(@Valid @ModelAttribute UserForm userForm, BindingResult rBindingResult, User user, HttpSession session) {
+    public String registerRequest(@Valid @ModelAttribute UserForm userForm, BindingResult rBindingResult, HttpSession session) {
         
         // fetch form data 
         // done: in @GetMapping("/register") using UserForm
@@ -97,24 +97,46 @@ public class PageController {
         if (rBindingResult.hasErrors()) return "register";
 
 
-        // save to database
-        // done:
-
-        service.addUser(user);
-
-
-        // message = "registration successful"
-        // done:
-
-        Message message = Message.builder().content("Registration Successful!").type(MessageType.green).build();
-
-        session.setAttribute("message", message);
+	// Map form data to user entity
+	User user = new User();
+	user.setEmail(userForm.getEmail());
+	user.setPassword(userForm.getPassword());
+	user.setName(userForm.getName());
 
 
-        // redirect to login page
-        // done:
 
-        return "redirect:/user/dashboard";
+	try {
+
+		service.addUser(user);
+	
+	
+		// message = "registration successful"
+		// done:
+	
+		Message message = Message.builder().content("Registration Successful!. ").type(MessageType.green).build();
+	
+		session.setAttribute("message", message);
+	
+	
+		// redirect to login page
+		// done:
+	
+		return "redirect:/login";
+
+	}
+
+	catch (IllegalStateException e) {
+
+		// If email already exists, set error message
+		Message message = Message.builder()
+			.content("User already exists with this email. Please use a different email or log in.")
+			.type(MessageType.red)
+			.build();
+		session.setAttribute("message", message);
+	
+		return "redirect:/register"; // Redirect back to registration form
+	}
+
         
     }
 

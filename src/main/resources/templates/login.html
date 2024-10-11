@@ -33,6 +33,12 @@
 
                       Invalid username and password.</div>
 
+		      <!-- <div class="mt-4 text-red-600" th:if="${param.error}">
+			<span th:if="${param.error == 'Incorrect password'}">Incorrect password. Please try again.</span>
+			<span th:if="${param.error == 'User not found'}">User not found. Please check your email.</span>
+			<span th:if="${param.error != 'Incorrect password' and param.error != 'User not found'}">Invalid username and password.</span>
+		    </div> -->
+		    
 
                     <div class="mt-4 text-green-500" th:if="${param.logout}">
 

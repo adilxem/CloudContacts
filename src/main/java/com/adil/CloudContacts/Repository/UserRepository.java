@@ -11,4 +11,6 @@ import com.adil.CloudContacts.Model.User;
 public interface UserRepository extends JpaRepository<User, String> {
 
     Optional<User> findByEmail(String email);
+
+//     Optional<User> findUserByEmailToken(String emailToken);
 }

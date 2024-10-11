@@ -10,7 +10,7 @@ import com.adil.CloudContacts.Model.Contact;
 import com.adil.CloudContacts.Services.ContactService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user/api")
 public class ApiController {
 
     @Autowired

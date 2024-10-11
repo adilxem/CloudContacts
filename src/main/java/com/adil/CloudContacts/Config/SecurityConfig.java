@@ -35,6 +35,9 @@ public class SecurityConfig {
     @Autowired
     private OAuthAuthenticationSuccessHandler oAuthAuthenticationSuccessHandler;
 
+    @Autowired
+    private AuthFailureHandler authFailureHandler;
+
 
     @Bean
     AuthenticationProvider authenticationProvider() {
@@ -48,6 +51,9 @@ public class SecurityConfig {
         // get the object of PasswordEncoder and pass in the argument below
 
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+
+	// Propagate UsernameNotFoundException instead of treating it as BadCredentialsException
+	daoAuthenticationProvider.setHideUserNotFoundExceptions(false);
 
         return daoAuthenticationProvider;        
     }
@@ -84,37 +90,10 @@ public class SecurityConfig {
 
             formLogin.passwordParameter("password");
 
-            // formLogin.failureHandler(new AuthenticationFailureHandler() {
 
-            //     @Override
-            //     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
-            //             AuthenticationException exception) throws IOException, ServletException 
-                      
-            //             {
-            //                 throw new UnsupportedOperationException("Unimplemented method 'onAuthenticationFailure'");
-            //             }
-                
-            // });
-
-
-            // formLogin.successHandler(new AuthenticationSuccessHandler() {
-
-            //     @Override
-            //     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-            //             Authentication authentication) throws IOException, ServletException {
-                            
-                            
-            //                 throw new UnsupportedOperationException("Unimplemented method 'onAuthenticationSuccess'");
-            //             }           
-
-            // });
+            formLogin.failureHandler(authFailureHandler);
 
         });
-
-
-        // httpSecurity.csrf(csrf -> csrf.ignoringRequestMatchers("/authenticate", "/dologout"));
-
-        // httpSecurity.csrf(AbstractHttpConfigurer::disable);
 
         httpSecurity.logout(logoutForm -> {
 

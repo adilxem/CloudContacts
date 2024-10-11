@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.adil.CloudContacts.Helper.Constants;
+import com.adil.CloudContacts.Helper.Helper;
 import com.adil.CloudContacts.Helper.ResourceNotFoundExcepiton;
 import com.adil.CloudContacts.Model.User;
 import com.adil.CloudContacts.Repository.UserRepository;
@@ -22,9 +23,18 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private EmailService emailService;
+
 
 
     public User addUser(User user) {
+
+
+	if (repository.findByEmail(user.getEmail()).isPresent()) {
+
+		throw new IllegalStateException("User already exists with this email!");
+	}
 
         String id = UUID.randomUUID().toString();
 
@@ -39,10 +49,27 @@ public class UserService {
         user.setRoleList(List.of(Constants.ROLE_USER));
 
         // set a default profile picture
-
+	
         user.setProfilePic("/images/user.png");
+	
+	
+	// String emailToken = UUID.randomUUID().toString();
+	
+	// user.setEmailToken(emailToken);
 
-        return repository.save(user);
+        User savedUser = repository.save(user);
+
+	// String emailLink = Helper.getLinkForEmailVerification(emailToken);
+
+	// emailService.sendEmail(savedUser.getEmail(), "Verify Your Account - CloudContacts", 
+	// "Hi " + savedUser.getName() + ",\n\n" + 
+	// "Click the link below to verify your account:\n\n" + 
+	// emailLink + "\n\n" +
+	// "Welcome to CloudContacts!\n" +
+	// "Adil");
+
+	return savedUser;
+	
     }
 
     public Optional<User> getUserById(String id) {
@@ -77,5 +104,10 @@ public class UserService {
 
         return repository.findByEmail(email).orElse(null);
     }
+
+//     public User getUserByEmailToken(String emailToken) {
+
+// 	return repository.findUserByEmailToken(emailToken).orElse(null);
+//     }
 
 }

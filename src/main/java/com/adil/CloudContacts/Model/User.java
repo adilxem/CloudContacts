@@ -52,6 +52,9 @@ public class User implements UserDetails{
     private String profilePic;
     private String phoneNumber;
 
+    @Getter(value = AccessLevel.NONE)
+    private boolean enabled = true;
+
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
 
@@ -68,6 +71,8 @@ public class User implements UserDetails{
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roleList = new ArrayList<>();
 
+//     private String emailToken;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -76,6 +81,13 @@ public class User implements UserDetails{
 
         return roles;
     }
+
+    @Override
+    public boolean isEnabled() {
+
+        return this.enabled;
+    }
+
 
 
     @Override

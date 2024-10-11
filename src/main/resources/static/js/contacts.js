@@ -45,7 +45,7 @@ async function loadContactData(id) {
 
     try {
         
-        const data = await (await fetch(`http://localhost:8080/api/contact/${id}`)).json();
+        const data = await (await fetch(`http://localhost:8080/user/api/contact/${id}`)).json();
         console.log(data);
 
         document.querySelector('#contact_name').innerHTML = data.name;

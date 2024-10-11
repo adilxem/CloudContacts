@@ -72,6 +72,8 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
         user1.setProviderUserId(user.getName());
         user1.setRoleList(List.of(Constants.ROLE_USER));
         user1.setEmailVerified(true);
+	user1.setEnabled(true);
+
 
 
         User user2 = repository.findByEmail(email).orElse(null);
