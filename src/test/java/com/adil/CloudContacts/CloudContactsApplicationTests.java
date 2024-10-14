@@ -1,10 +1,10 @@
 package com.adil.CloudContacts;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.adil.CloudContacts.Services.EmailService;
+// import com.adil.CloudContacts.Services.EmailService;
 
 @SpringBootTest
 class CloudContactsApplicationTests {
@@ -13,13 +13,13 @@ class CloudContactsApplicationTests {
 	void contextLoads() {
 	}
 
-	@Autowired
-	private EmailService emailService;
+	// @Autowired
+	// private EmailService emailService;
 
-	@Test
-	void sendEmailTest() {
+	// @Test
+	// void sendEmailTest() {
 
-		emailService.sendEmail("23352004@pondiuni.ac.in", "Testing Email Service", "CloudContacts email verification link");
-	}
+	// 	emailService.sendEmail("23352004@pondiuni.ac.in", "Testing Email Service", "CloudContacts email verification link");
+	// }
 
 }

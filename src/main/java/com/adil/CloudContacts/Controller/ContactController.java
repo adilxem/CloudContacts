@@ -290,6 +290,7 @@ public class ContactController {
         .type(MessageType.green)
         .build());
 
-        return "redirect:/user/contacts/view/" + contactId;
+        // return "redirect:/user/contacts/view/" + contactId;
+        return "redirect:/user/contacts";
     }
 }
