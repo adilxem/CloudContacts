@@ -102,6 +102,7 @@ public class PageController {
 	user.setEmail(userForm.getEmail());
 	user.setPassword(userForm.getPassword());
 	user.setName(userForm.getName());
+	user.setPhoneNumber(userForm.getPhoneNumber());
 
 
 
