@@ -13,13 +13,40 @@
 			<aside th:replace="~{/user/sidebar :: sidebar}"></aside>
 		</aside>
 
+		<div th:if="${loggedInUser}" 
+		
+		class="sm:pl-64 mt-40 flex flex-col justify-center items-center">
 
-		<div class="sm:pl-64">
+			<div class="mb-10">
 
+				<h1 class="text-2xl ">Hi,</h1>
 
-			<section class="my-20 mb-10 rounded-md bg-blue-600 dark:bg-blue-900  text-white py-20 animate__animated animate__fadeInDown">
+				<p class="text-7xl font-semibold" th:text="${loggedInUser.name}" ></p>
+
+			</div>
+
+			<section class="mb-8 rounded-md  dark:bg-gray-900  text-black-600 py-20 animate__animated animate__fadeInDown">
 				<div class="container mx-auto text-center">
-					<h2 class="text-4xl font-bold mb-4">Welcome to Contact Manager</h2>
+					<h2 class="text-5xl font-bold mb-4">Welcome to CloudContacts</h2>
+					<p class="text-xl mb-10 mt-2">
+						Manage all your contacts effortlessly and securely in one place.
+					</p>
+					<a data-th-href="@{'/user/contacts/add'}"
+						class="bg-blue-600 text-white text-lg px-6 py-3 rounded-full font-semibold hover:bg-blue-800 transition duration-300">Add a Contact</a>
+				</div>
+			</section>
+
+
+
+		</div>
+
+
+		<div th:unless="${loggedInUser}">
+
+
+			<section class="mb-10 rounded-md bg-blue-600 dark:bg-blue-900  text-white py-20 animate__animated animate__fadeInDown">
+				<div class="container mx-auto text-center">
+					<h2 class="text-4xl font-bold mb-4">Welcome to CloudContacts</h2>
 					<p class="text-lg mb-8">
 						Manage all your contacts effortlessly and securely in one place.
 					</p>
@@ -133,7 +160,7 @@
 			<!-- Footer Section -->
 			<footer class="bg-gray-800 text-white py-8 rounded-md">
 				<div class="container mx-auto text-center">
-					<p>&copy; 2024 Contact Manager. All rights reserved.</p>
+					<p>&copy; 2024 CloudContacts. All rights reserved.</p>
 				</div>
 			</footer>
 

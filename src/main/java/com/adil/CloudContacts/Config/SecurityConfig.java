@@ -82,7 +82,7 @@ public class SecurityConfig {
 
             formLogin.loginProcessingUrl("/authenticate");
 
-            formLogin.defaultSuccessUrl("/user/profile", true);
+            formLogin.defaultSuccessUrl("/home", true);
 
             formLogin.failureUrl("/login?error=true");
 
