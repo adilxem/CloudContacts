@@ -67,5 +67,12 @@ A **Spring Boot** application integrated with **Cloudinary** for managing and st
 ### Edit or Delete Contacts:
 - Easily update contact details or remove them as necessary.
 
+---
+
 ## Screenshots
 
+![Screenshot from 2024-10-16 00-08-19](https://github.com/user-attachments/assets/b97d53a8-a123-49e3-b121-d26b7be3a5cc)
+
+![image](https://github.com/user-attachments/assets/b1f4b954-acfc-41d9-ab37-07e522554e7c)
+
+![image](https://github.com/user-attachments/assets/458ecc47-4fa4-4d06-9ddd-034ef930589c)
